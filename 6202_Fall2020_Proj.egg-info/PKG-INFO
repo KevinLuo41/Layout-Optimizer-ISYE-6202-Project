@@ -1,0 +1,18 @@
+Metadata-Version: 1.2
+Name: 6202-Fall2020-Proj
+Version: 1.0.0
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Kaiwen Luo
+Author-email: kluo37@gatech.edu
+License: UNKNOWN
+Description: # Layout-Optimizer---ISYE-6202-Project
+        ---
+        
+        
+Keywords: warehousing
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >= 3.5

@@ -1,0 +1,11 @@
+.DS_Store
+ABC.py
+README.md
+setup.py
+6202_Fall2020_Proj.egg-info/PKG-INFO
+6202_Fall2020_Proj.egg-info/SOURCES.txt
+6202_Fall2020_Proj.egg-info/dependency_links.txt
+6202_Fall2020_Proj.egg-info/top_level.txt
+Model/Model.md
+Simulator/Simulator.ipynb
+Simulator/simulator.py
