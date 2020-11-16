@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 def ABC(data=None, split_method="quantile", time_scale=None, ratio=(0.2, 0.3, 0.5), value=(0.7, 0.25, 0.05)):
     r'''
     ABC analysis: Split the artikels to 3 different critical type based on chosen method.

@@ -1,16 +1,7 @@
 import pandas as pd
-import numpy as np
 from fbprophet import Prophet
-import matplotlib.pyplot as plt
 from datetime import date, timedelta
-from ABC import ABC
 
-
-# Read Data
-def preprocessing(picking_path=None):
-    picking = pd.read_csv(picking_path)
-    picking["Execution_time"] = pd.to_datetime(picking["Execution_time"])
-    return picking
 
 
 # Generate holidays
@@ -67,13 +58,4 @@ def Simulator(artikelno=None, picking=None, freq="D", periods=365, years=(2018, 
     return m, forecast
 
 
-if __name__ == "__main__":
-    data_path = "../../WHAI-provided_data/"
-    p_path = data_path + "02_picking-activity_K1.csv"
 
-    picking = preprocessing(p_path)
-
-    model, forecast = Simulator(142, picking)
-    # fig1 = model.plot(forecast)
-
-    # All_prod, A, B, C = ABC(split_method="moves", time_scale=1)
