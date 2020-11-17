@@ -75,6 +75,7 @@ class SelectionModel:
                 select.append(int(v.VarName[4:-1]))
         print(select)
 
+
 if __name__ == "__main__":
     data_path = "../../WHAI-provided_data/"
     p_path = data_path + "02_picking-activity_K1.csv"
