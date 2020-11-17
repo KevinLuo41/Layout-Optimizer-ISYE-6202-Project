@@ -60,8 +60,9 @@ if __name__ == "__main__":
     data_path = "../../WHAI-provided_data/"
     p_path = data_path + "02_picking-activity_K1.csv"
     clayout_path = data_path+"Current_layout.xlsx"
+    item_path = data_path+"04_Item-Master_K1.xlsx"
 
-    picking = read_picking(p_path)
+    picking = read_picking(p_path,item_path)
     clayout = read_clayout(clayout_path)
 
     # forecast
