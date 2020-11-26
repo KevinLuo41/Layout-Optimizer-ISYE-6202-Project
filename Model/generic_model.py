@@ -5,7 +5,6 @@ from abc import abstractmethod
 
 class GenericModel(ABC):
 
-
     def __init__(self):
         return
 
@@ -18,11 +17,11 @@ class GenericModel(ABC):
         pass
 
     @abstractmethod
-    def set_model_constrs(self, model, model_vars):
+    def set_model_constrs(self, model):
         pass
 
     @abstractmethod
-    def set_objective(self, model, model_vars):
+    def set_objective(self, model):
         pass
 
     def construct_model(self):
@@ -36,6 +35,10 @@ class GenericModel(ABC):
         self.get_all_sets_params()
         model = Model("")
         model_vars = self.set_model_vars(model)
-        self.set_model_constrs(model, model_vars)
-        self.set_objective(model, model_vars)
+        self.set_model_constrs(model)
+        self.set_objective(model)
         return model
+
+    @abstractmethod
+    def output_result(self):
+        pass

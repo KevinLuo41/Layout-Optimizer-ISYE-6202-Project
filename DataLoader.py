@@ -33,4 +33,8 @@ def generate_input(picking = None, Clayout = None):
 
     return model_input
 
+def read_stack(stack_path=None,selection = None):
+    stack_data = pd.read_csv(stack_path)
+
+
 
