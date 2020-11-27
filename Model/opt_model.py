@@ -2,9 +2,6 @@ from DataLoader import *
 from gurobipy import *
 from Model.generic_model import *
 
-from abc import ABC
-import pickle
-from abc import abstractmethod
 
 class SelectionModel(GenericModel):
     """
@@ -39,25 +36,26 @@ class SelectionModel(GenericModel):
 
         if self.N is None:
             self.N = np.count_nonzero(self.Clayout.to_numpy().flatten() != -1)
+            print(self.N)
 
         return
 
     # @abstractmethod
-    def set_model_vars(self, model):
+    def set_model_vars(self):
         print("Defining Variables")
         self.x_i = {}
         for i in self.A:
-            self.x_i[i] = model.addVar(vtype=GRB.BINARY, name='x_i[%s]' % (i))
+            self.x_i[i] = self.model.addVar(vtype=GRB.BINARY, name='x_i[%s]' % (i))
 
     # @abstractmethod
-    def set_model_constrs(self, model):
+    def set_model_constrs(self):
         print("Defining Constraints")
-        C1 = model.addConstr((quicksum(self.x_i[i] * self.li[i] for i in self.A) <= self.N), "")
+        C1 = self.model.addConstr((quicksum(self.x_i[i] * self.li[i] for i in self.A) <= self.N), "")
 
     # @abstractmethod
-    def set_objective(self, model):
+    def set_objective(self):
 
-        model.setObjective(quicksum((self.s * self.pi[i] - self.cr * self.di[i]) * self.x_i[i] for i in self.A),
+        self.model.setObjective(quicksum((self.s * self.pi[i] - self.cr * self.di[i]) * self.x_i[i] for i in self.A),
                            GRB.MAXIMIZE)
 
     def construct_model(self):
@@ -69,10 +67,10 @@ class SelectionModel(GenericModel):
             Once returned, the user should run model.optimize() to retrieve results
         """
         self.get_all_sets_params()
-        self.set_model_vars(self.model)
-        self.set_model_constrs(self.model)
-        self.set_objective(self.model)
-        return self.model
+        self.set_model_vars()
+        self.set_model_constrs()
+        self.set_objective()
+        return
 
     def output_result(self):
         solution = {}
@@ -102,8 +100,8 @@ if __name__ == "__main__":
 
     Selection = SelectionModel(model_input, Clayout)
 
-    model = Selection.construct_model()
-    model.optimize()
+    Selection.construct_model()
+    Selection.model.optimize()
 
     Selection.output_result()
 

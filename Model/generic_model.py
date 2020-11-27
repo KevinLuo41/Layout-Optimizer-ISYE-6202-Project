@@ -1,11 +1,14 @@
 from gurobipy import *
 from abc import ABC
+import numpy as np
 from abc import abstractmethod
 
 
 class GenericModel(ABC):
 
     def __init__(self):
+        self.model = Model("")
+
         return
 
     @abstractmethod
@@ -13,15 +16,16 @@ class GenericModel(ABC):
         return
 
     @abstractmethod
-    def set_model_vars(self, model):
+    def set_model_vars(self):
+
         pass
 
     @abstractmethod
-    def set_model_constrs(self, model):
+    def set_model_constrs(self):
         pass
 
     @abstractmethod
-    def set_objective(self, model):
+    def set_objective(self):
         pass
 
     def construct_model(self):
@@ -33,10 +37,10 @@ class GenericModel(ABC):
             Once returned, the user should run model.optimize() to retrieve results
         """
         self.get_all_sets_params()
-        model = Model("")
-        model_vars = self.set_model_vars(model)
-        self.set_model_constrs(model)
-        self.set_objective(model)
+
+        model_vars = self.set_model_vars()
+        self.set_model_constrs()
+        self.set_objective()
         return model
 
     @abstractmethod

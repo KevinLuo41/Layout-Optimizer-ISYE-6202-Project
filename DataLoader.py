@@ -28,13 +28,42 @@ def generate_input(picking = None, Clayout = None):
     unique, counts = np.unique(Clayout.to_numpy().flatten(), return_counts=True)
     li = pd.DataFrame({"Artikelno": unique[2:], "Min_area": counts[2:], "Assigned": np.zeros_like(counts[2:])})
     model_input = model_input.merge(li, on="Artikelno", how="left")
-    model_input["Min_area"] = model_input["Min_area"].fillna(1).astype(int)
+    model_input["Min_area"] = 1
     model_input["Assigned"] = model_input["Assigned"].fillna(0).astype(int)
 
     return model_input
 
 def read_stack(stack_path=None,selection = None):
     stack_data = pd.read_csv(stack_path)
+    selection = pd.DataFrame({"Artikelno":selection,"Stack_Easiness":np.ones_like(selection)})
+    selection = selection.merge(stack_data,on="Artikelno",how="left")
+    selection["Easiness"] = selection["Easiness"].fillna(selection["Stack_Easiness"])
+    selection = selection[["Artikelno","Easiness"]].astype(int)
+    return selection
+
+
+def dist_matrix(Clayout=None, c=(-16, 2), unit_h=1.2, unit_v=0.8):
+    # x:row, y:col
+    # horizontal 1.2, vertical 0.8
+    nx, ny = Clayout.shape
+    x = np.linspace(0, nx - 1, nx)
+    y = np.linspace(0, ny - 1, ny)
+
+    coord = np.array(np.meshgrid(x, y)).transpose([2, 1, 0])
+    dist = np.sum(abs(coord - c) * (unit_v, unit_h), axis=2)
+
+    coord_x = coord[:, :, 0].astype(int)
+    coord_y = coord[:, :, 1].astype(int)
+
+    df = pd.DataFrame({"x": coord_x.flatten(),
+                       "y": coord_y.flatten(),
+                       "dist": dist.flatten(),
+                       "clayout": Clayout.to_numpy().flatten()})
+    df = df[df["clayout"] != -1]
+
+
+    return df
+
 
 
 
