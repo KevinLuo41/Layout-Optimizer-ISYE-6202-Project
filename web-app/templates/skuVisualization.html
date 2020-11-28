@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SKU analysis tool</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+  <body>
+    <h1>
+      SKU ANALYSIS
+    </h1>
+    <table>
+      <tr>
+        <th></th>
+        <th class="prod_aisle">25</th>
+        <th></th>
+        <th class="prod_aisle">26</th>
+        <th class="prod_aisle">27</th>
+        <th></th>
+        <th class="prod_aisle">28</th>
+        <th class="prod_aisle">29</th>
+        <th></th>
+        <th class="prod_aisle">30</th>
+        <th class="prod_aisle">31</th>
+        <th></th>
+        <th class="prod_aisle">32</th>
+        <th></th>
+      </tr>
+      {% for row in range(36) %}
+        <tr>
+            <td class="row_num">{{153-row}}</td>
+            {% for aisle_idx in range(12) %}
+              {% if aisle_idx in [0,2,3,5,6,8,9,11] %}
+                  {% if (sku_mapping[row, aisle_idx]!= -1) and (sku_mapping[row, aisle_idx]!= 0) %}
+                  <td class="sku">{{sku_mapping[row,aisle_idx]}}</td>
+                  {% else %}
+                  <td class="sku"></td>
+                  {% endif %}
+              {% else %}
+              <td></td>
+              {% endif %}
+            {% endfor %}
+            <td class="row_num">{{153-row}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  </body>
+</html>

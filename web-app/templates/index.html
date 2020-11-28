@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SKU analysis tool</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+  <body>
+    <h1>
+      SKU ANALYSIS
+    </h1>
+    <form method="POST">
+      <table>
+        <tr class="text_box_input">
+          <td class="input_text_name"><label for="smin">Savings in minutes when a pallet is picked from the forward area rather than from the bulk-storage area:</label></td>
+          <td class="input_text_box"><input type="text" id="smin" name="smin" value="2"></td>
+       </tr>
+       <tr class="text_box_input">
+          <td class="input_text_name"><label for="numloc">Number of forward pick locations available:</label></td>
+          <td class="input_text_box"><input type="text" id="numloc" name="numloc"></td>
+        </tr>
+        <tr class="text_box_input">
+          <td class="input_text_name"><label for="xcoord">X coordinate of picker location in warehouse:</label></td>
+          <td class="input_text_box"><input type="text" id="xcoord" name="xcoord" value="-16"></td>
+        </tr>
+        <tr class="text_box_input">
+          <td class="input_text_name"><label for="ycoord">Y coordinate of picker location in warehouse:</label></td>
+          <td class="input_text_box"><input type="text" id="ycoord" name="ycoord" value="2"></td>
+        </tr>
+        <tr class="text_box_input">
+          <td class="input_text_name"><label for="Hlength">Length in meters of the horizontal distance of a pallet:</label></td>
+          <td class="input_text_box"><input type="text" id="Hlength" name="Hlength" value="1.2"></td>
+        </tr>
+        <tr class="text_box_input">
+          <td class="input_text_name"><label for="Vlength">Length in meters of the vertical distance of a pallet:</label></td>
+          <td class="input_text_box"><input type="text" id="Vlength" name="Vlength" value="0.8"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input class = "submit_button" type="submit" value="Submit"></td>
+        </tr>
+      </table>
+        
+    
+    </form>
+
+  </body>
+</html>
