@@ -102,9 +102,9 @@ class AssignmentModel(GenericModel):
 
         print(layout)
 
-        return solution
+        return layout
 
-if __name__ == "__main__":
+def run_assgin_model(c=(-16, 2), h=1.2, v=0.8):
     data_path = "../../WHAI-provided_data/"
     p_path = data_path + "02_picking-activity_K1.csv"
     i_path = data_path + "04_Item-Master_K1.xlsx"
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     picking = read_picking(p_path, i_path)
     Clayout = read_clayout(clayout_path)
     model_input = generate_input(picking, Clayout)
-    Dist_mat = dist_matrix(Clayout)
+    Dist_mat = dist_matrix(Clayout,c=c, unit_h=h, unit_v=v)
     selection =get_selection()
     stack = read_stack(stack_path,selection)
 
@@ -123,6 +123,8 @@ if __name__ == "__main__":
 
     Assignment.construct_model()
     Assignment.model.optimize()
-    Assignment.output_result()
+    layout = Assignment.output_result()
+
+    return layout
 
     # Assignment.output_result()

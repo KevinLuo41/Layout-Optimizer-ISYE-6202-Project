@@ -20,7 +20,7 @@ class SelectionModel(GenericModel):
         self.model_input = model_input
         self.Clayout = Clayout
         self.s = s
-        self.cr = 2
+        self.cr = cr
         self.N = N
 
         self.model = Model("")
@@ -88,7 +88,7 @@ class SelectionModel(GenericModel):
         print(select)
 
 
-if __name__ == "__main__":
+def run_opt_model(s,cr,N):
     data_path = "../../WHAI-provided_data/"
     p_path = data_path + "02_picking-activity_K1.csv"
     i_path = data_path + "04_Item-Master_K1.xlsx"
@@ -98,7 +98,7 @@ if __name__ == "__main__":
     Clayout = read_clayout(clayout_path)
     model_input = generate_input(picking, Clayout)
 
-    Selection = SelectionModel(model_input, Clayout)
+    Selection = SelectionModel(model_input, Clayout,s=s,cr=cr,N=N)
 
     Selection.construct_model()
     Selection.model.optimize()
