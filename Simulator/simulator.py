@@ -1,13 +1,14 @@
 import pandas as pd
 from fbprophet import Prophet
 from datetime import date, timedelta
-
+from DataLoader import *
+from dateutil.relativedelta import relativedelta
 
 
 # Generate holidays
 def Sunday(years=(2018, 2025)):
     year_low, year_up = years
-
+    year_up+=1
     def findsundays(year):
         d = date(year, 1, 1)  # January 1st
         d += timedelta(days=6 - d.weekday())  # First Sunday
@@ -30,32 +31,49 @@ def Sunday(years=(2018, 2025)):
 
 
 # Picking simulator
-def Simulator(artikelno=None, picking=None, freq="D", periods=365, years=(2018, 2025)):
-    DateRange = pd.DataFrame({"Execution_time": pd.date_range('2018-08-31', periods=701, freq='D')})
+def Simulator(artikelno=None, hist_periods=None, freq="D", fore_periods=365):
+    data_path = "../../WHAI-provided_data/"
+    p_path = data_path + "02_picking-activity_K1.csv"
+    i_path = data_path + "04_Item-Master_K1.xlsx"
+    picking = read_picking(p_path, i_path)
+    first_day = picking["Execution_time"].min()
+    last_day = picking["Execution_time"].max()
+
+    if hist_periods:
+        hist = hist_periods
+    else:
+        hist = (picking["Execution_time"].max() - picking["Execution_time"].min()).days + 1
+
+    DateRange = pd.DataFrame({"Execution_time": pd.date_range(end=last_day, periods=hist, freq="D")})
     picking_artikel = picking[picking["Artikelno"] == artikelno]
 
     picking_sum = picking_artikel.groupby(["Execution_time"], as_index=0)["Amount"].sum()
     picking_ts = DateRange.merge(picking_sum, on="Execution_time", how="left")
-    picking_ts["Amount"] = picking_ts["Amount"]
+    # picking_ts["Amount"] = picking_ts["Amount"]
 
-    if isinstance(years, tuple):
-        sundays = Sunday(years)
-    elif isinstance(years, int):
-        sundays = Sunday((2018, years))
-    else:
-        raise KeyError("Parameter 'years' should be an int or tuple.")
+
+    if freq == "D":
+        sundays = Sunday((first_day.year, (last_day+relativedelta(days=fore_periods)).year))
+    elif freq == "M":
+        sundays = Sunday((first_day.year, (last_day + relativedelta(months=fore_periods)).year))
+    elif freq == "Y":
+        sundays = Sunday((first_day.year, (last_day + relativedelta(years=fore_periods)).year))
+    # print(sundays)
 
     picking_ts.columns = ["ds", "y"]
     m = Prophet(holidays=sundays, yearly_seasonality=True, daily_seasonality=True)
     m.add_country_holidays(country_name='US')
     m.fit(picking_ts)
-    future = m.make_future_dataframe(periods=365, freq='D')
+    future = m.make_future_dataframe(periods=fore_periods, freq=freq)
     forecast = m.predict(future)
 
     # save forecast plot
     fig = m.plot(forecast)
-    fig.savefig("forecast_%s.png" % artikelno)
-    return m, forecast
+    fig_name = "forecast_%s.png" % artikelno
+    fig.savefig("../output/forecast_imgs/"+fig_name)
+    fig.savefig("../web-app/static/imgs/forecast_ouput/" + fig_name)
+    return fig_name, m, forecast
 
 
-
+if __name__ == '__main__':
+    Simulator(55)
