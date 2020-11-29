@@ -67,6 +67,9 @@ def forecast_out():
   print(out_path)
   return render_template("forecast_result.html", img_path = out_path)
 
+@app.route("/about")
+def about():
+  return render_template("About.html")
 
 if __name__ == "__main__":
   app.run(debug=True)
