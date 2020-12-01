@@ -61,7 +61,6 @@ def dist_matrix(Clayout=None, c=(-16, 2), unit_h=1.2, unit_v=0.8):
                        "clayout": Clayout.to_numpy().flatten()})
     df = df[df["clayout"] != -1]
 
-
     return df
 
 

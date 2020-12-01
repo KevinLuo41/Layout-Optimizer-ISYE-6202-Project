@@ -71,5 +71,13 @@ def forecast_out():
 def about():
   return render_template("About.html")
 
+@app.route("/abc_in")
+def abc_in():
+  return render_template("ABC_in.html")
+
+@app.route("/abc_out",methods=['POST'])
+def abc_out():
+  return render_template("ABC_out.html")
+
 if __name__ == "__main__":
   app.run(debug=True)

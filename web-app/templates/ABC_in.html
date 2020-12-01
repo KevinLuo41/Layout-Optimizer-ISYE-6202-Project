@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SKU analysis tool</title>
+    <title>ABC Analysis</title>
     <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
 <body>
 <h1>
-    SKU ANALYSIS
+    ABC Analysis Tool
 </h1>
-
 <!--Menu-->
 <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/forecast-in">Order Forecast Model</a></li>
     <li><a href="/abc_in">ABC Analysis</a></li>
     <li><a href="/layout-in">Layout Model</a></li>
-
     <li style="float:right"><a href="/about">About</a></li>
 </ul>
 
 <br/>
 <br/>
 
-<form action="/layout" method="POST">
+
+<form action="/abc_out" method="POST">
     <table>
         <tr class="text_box_input">
             <td class="input_text_name"><label for="smin">Savings in minutes when a pallet is picked from the forward

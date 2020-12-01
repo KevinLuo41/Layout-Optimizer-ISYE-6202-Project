@@ -1,8 +1,5 @@
-import numpy as np
-import pandas as pd
-from DataLoader import *
 from Simulator.simulator import *
-from ABC import *
+from ABC_Analysis.ABC import *
 
 def dist_matrix(nx=12, ny=36, c=(-16, 2), unit_x=1.2, unit_y=0.8):
     x = np.linspace(0, nx - 1, nx)
