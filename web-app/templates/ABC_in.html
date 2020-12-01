@@ -25,37 +25,40 @@
 <form action="/abc_out" method="POST">
     <table>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="smin">Savings in minutes when a pallet is picked from the forward
-                area rather than from the bulk-storage area:</label></td>
-            <td class="input_text_box"><input type="text" id="smin" name="smin" value="2"></td>
-        </tr>
-        <tr class="text_box_input">
-            <td class="input_text_name"><label for="cr">Minutes required by each restock of the forward area:</label>
+            <td class="input_text_name"><label for="methods">Methods that used for Analysis:</label></td>
+            <td class="input_text_box">
+                <select class="method_select" name="methods" id="methods">
+                    <option value="quantile">quantile</option>
+                    <option value="value">value</option>
+                    <option value="moves">moves</option>
+                </select>
             </td>
-            <td class="input_text_box"><input type="text" id="cr" name="cr" value="2"></td>
+
         </tr>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="numloc">Number of forward pick locations available:</label></td>
-            <td class="input_text_box"><input type="text" id="numloc" name="numloc"></td>
+            <td class="input_text_name"><label for="time">Time scale for ABC analysis (month):</label></td>
+            <td class="input_text_box"><input type="text" id="time" name="time"></td>
+        </tr>
+
+
+        <tr class="text_box_input">
+            <th class= "input_text_name" rowspan="3"><label for="ratioA">Split ratio of ABC analysis:</label></th>
+            <td class="input_text_box"><input type="text" id="ratioA" name="ratioA"></td>
         </tr>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="xcoord">X coordinate of picker location in warehouse:</label></td>
-            <td class="input_text_box"><input type="text" id="xcoord" name="xcoord" value="-16"></td>
+<!--            <td class="input_text_name"><label for="ratioB">Split ratio of ABC analysis:</label></td>-->
+            <td class="input_text_box"><input type="text" id="ratioB" name="ratioB"></td>
         </tr>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="ycoord">Y coordinate of picker location in warehouse:</label></td>
-            <td class="input_text_box"><input type="text" id="ycoord" name="ycoord" value="2"></td>
+<!--            <td class="input_text_name"><label for="ratioC">Split ratio of ABC analysis:</label></td>-->
+            <td class="input_text_box"><input type="text" id="ratioC" name="ratioA"></td>
         </tr>
+
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="Hlength">Length in meters of the horizontal distance of a
-                pallet:</label></td>
-            <td class="input_text_box"><input type="text" id="Hlength" name="Hlength" value="1.2"></td>
+            <td class="input_text_name"><label for="ratio">Split ratio of ABC analysis:</label></td>
+            <td class="input_text_box"><input type="text" id="ratio" name="ratio"></td>
         </tr>
-        <tr class="text_box_input">
-            <td class="input_text_name"><label for="Vlength">Length in meters of the vertical distance of a
-                pallet:</label></td>
-            <td class="input_text_box"><input type="text" id="Vlength" name="Vlength" value="0.8"></td>
-        </tr>
+
         <tr>
             <td></td>
             <td><input class="submit_button" type="submit" value="Submit"></td>

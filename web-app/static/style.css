@@ -106,3 +106,8 @@ th, .row_num {
     width: 200px;
     padding: 10px;
 }
+
+.method_select {
+    padding: 15px;
+    width: 150px;
+}
