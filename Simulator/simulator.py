@@ -70,8 +70,8 @@ def Simulator(artikelno=None, hist_periods=None, freq="D", fore_periods=365):
     # save forecast plot
     fig = m.plot(forecast)
     fig_name = "forecast_%s.png" % artikelno
-    fig.savefig("../output/forecast_imgs/"+fig_name)
-    fig.savefig("../web-app/static/imgs/forecast_ouput/" + fig_name)
+    fig.savefig("../output/forecast_output/"+fig_name)
+    fig.savefig("../web-app/static/imgs/forecast_output/" + fig_name)
     return fig_name, m, forecast
 
 

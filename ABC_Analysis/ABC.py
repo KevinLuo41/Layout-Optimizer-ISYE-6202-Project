@@ -3,7 +3,7 @@ import pandas as pd
 from DataLoader import *
 import matplotlib.pyplot as plt
 
-def ABC(data=None, split_method="quantile", time_scale=None, ratio=(0.2, 0.3, 0.5), value=(0.7, 0.25, 0.05)):
+def ABC(split_method="quantile", time_scale=None, ratio=(0.2, 0.3, 0.5), value=(0.7, 0.25, 0.05),data=None):
     r'''
     ABC analysis: Split the artikels to 3 different critical type based on chosen method.
 
@@ -70,9 +70,9 @@ def ABC(data=None, split_method="quantile", time_scale=None, ratio=(0.2, 0.3, 0.
 def HistBox(df,name = None):
     # setup the figure and axes
     fig = plt.figure(figsize=(6, 4))
-    bpAx = fig.add_axes([0.2, 0.7, 0.7, 0.3])  # left, bottom, width, height:
+    bpAx = fig.add_axes([0.1, 0.5, 0.8, 0.4])  # left, bottom, width, height:
     # (adjust as necessary)
-    histAx = fig.add_axes([0.2, 0.2, 0.7, 0.5])  # left specs should match and
+    histAx = fig.add_axes([0.1, 0.1, 0.8, 0.5])  # left specs should match and
     # bottom + height on this line should
     # equal bottom on bpAx line
     # plot stuff
@@ -88,5 +88,21 @@ def HistBox(df,name = None):
     bpAx.set_yticks([])  # don't need that 1 tick mark
 
     fig_name = "HistBox_%s.png" % name
-    fig.savefig("../output/forecast_ouput/" + fig_name)
-    fig.savefig("../web-app/static/imgs/forecast_ouput/" + fig_name)
+    fig.savefig("../output/ABC_output/" + fig_name)
+    fig.savefig("../web-app/static/imgs/ABC_output/" + fig_name)
+
+def Pie(A,B,C):
+    labels = ['A', 'B', 'C']
+    sizes = [A["Amount"].sum(), B["Amount"].sum(), C["Amount"].sum()]
+    explode = (0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+    fig, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    fig_name = "Pie.png"
+    fig.savefig("../output/ABC_output/" + fig_name)
+    fig.savefig("../web-app/static/imgs/ABC_output/" + fig_name)
+
+
