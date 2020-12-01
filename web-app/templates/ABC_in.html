@@ -25,7 +25,7 @@
 <form action="/abc_out" method="POST">
     <table>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="methods">Methods that used for Analysis:</label></td>
+            <td class="input_text_name" colspan="2"><label for="methods">Methods that used for Analysis:</label></td>
             <td class="input_text_box">
                 <select class="method_select" name="methods" id="methods">
                     <option value="quantile">quantile</option>
@@ -36,28 +36,41 @@
 
         </tr>
         <tr class="text_box_input">
-            <td class="input_text_name"><label for="time">Time scale for ABC analysis (month):</label></td>
+
+            <td class="input_text_name" colspan="2"><label for="time">Time scale for ABC analysis (month):</label></td>
             <td class="input_text_box"><input type="text" id="time" name="time"></td>
         </tr>
 
 
         <tr class="text_box_input">
-            <th class= "input_text_name" rowspan="3"><label for="ratioA">Split ratio of ABC analysis:</label></th>
+            <td class= "input_text_name" rowspan="3"><label for="valueA">Split quantile ratio of ABC analysis:</label></td>
+            <td class="input_text_name">A</td>
+            <td class="input_text_box"><input type="text" id="valueA" name="valueA"></td>
+        </tr>
+        <tr class="text_box_input">
+            <td class="input_text_name"><label for="valueB">B</label></td>
+            <td class="input_text_box"><input type="text" id="valueB" name="valueB"></td>
+        </tr>
+        <tr class="text_box_input">
+            <td class="input_text_name"><label for="valueC">C</label></td>
+            <td class="input_text_box"><input type="text" id="valueC" name="valueC"></td>
+        </tr>
+
+
+        <tr class="text_box_input">
+            <td class= "input_text_name" rowspan="3"><label for="ratioA">Split value ratio of ABC analysis:</label></td>
+            <td class="input_text_name">A</td>
             <td class="input_text_box"><input type="text" id="ratioA" name="ratioA"></td>
         </tr>
         <tr class="text_box_input">
-<!--            <td class="input_text_name"><label for="ratioB">Split ratio of ABC analysis:</label></td>-->
+            <td class="input_text_name"><label for="ratioB">B</label></td>
             <td class="input_text_box"><input type="text" id="ratioB" name="ratioB"></td>
         </tr>
         <tr class="text_box_input">
-<!--            <td class="input_text_name"><label for="ratioC">Split ratio of ABC analysis:</label></td>-->
+            <td class="input_text_name"><label for="ratioC">C</label></td>
             <td class="input_text_box"><input type="text" id="ratioC" name="ratioA"></td>
         </tr>
 
-        <tr class="text_box_input">
-            <td class="input_text_name"><label for="ratio">Split ratio of ABC analysis:</label></td>
-            <td class="input_text_box"><input type="text" id="ratio" name="ratio"></td>
-        </tr>
 
         <tr>
             <td></td>
