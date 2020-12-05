@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Forecast input</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../static/cover.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Forward Picking Zone Analysis Tool</h3>
+            <nav class="nav nav-masthead">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/forecast-in">Order Forecast Model</a>
+                <a class="nav-link active" href="/abc_in">ABC Analysis</a>
+                <a class="nav-link" href="/layout-in">Layout Model</a>
+                <a class="nav-link" href="/about">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>
+        ABC Analysis Input
+    </h1>
+    <br/>
+    <br/>
+
+    <style>
+        .text_box_input {
+            text-align: left;
+        }
+
+        .input_text_box {
+            width: 100px;
+            margin-left: 100px;
+        }
+
+    </style>
+
+
+    <div class="form-wrapper">
+        <form action="/abc_out" method="POST" class="layout-form">
+            <table>
+                <tr class="text_box_input" >
+                    <td class="input_text_name" colspan="2"><label for="methods">Methods that used for Analysis:</label>
+                    </td>
+                    <td class="input_text_box">
+                        <select class="method_select" name="methods" id="methods">
+                            <option value="quantile">quantile</option>
+                            <option value="value">value</option>
+                            <option value="moves">moves</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr class="text_box_input">
+
+                    <td class="input_text_name" colspan="2"><label for="time">Time scale for ABC analysis
+                        (month):</label></td>
+                    <td class="input_text_box"><input type="text" id="time" name="time"></td>
+                </tr>
+
+
+                <tr class="text_box_input">
+                    <td class="input_text_name" rowspan="3"><label for="valueA">Split quantile ratio(value) of ABC
+                        analysis:</label></td>
+                    <td class="input_text_name">A</td>
+                    <td class="input_text_box"><input type="text" id="valueA" name="valueA" value="0.2"></td>
+                </tr>
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="valueB">B</label></td>
+                    <td class="input_text_box"><input type="text" id="valueB" name="valueB" value="0.3"></td>
+                </tr>
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="valueC">C</label></td>
+                    <td class="input_text_box"><input type="text" id="valueC" name="valueC" value="0.5"></td>
+                </tr>
+
+
+            </table>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 200px">Submit</button>
+        </form>
+
+    </div>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Developed by <a href="https://www.linkedin.com/in/kaiwen-kevin-luo-2893aa17b/">@Kaiwen Luo</a>, <a href="">@Diego</a>.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

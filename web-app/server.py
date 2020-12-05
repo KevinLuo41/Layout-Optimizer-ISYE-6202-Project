@@ -20,12 +20,12 @@ def str_to_num(s):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index2.html")
 
 
 @app.route("/layout-in")
 def layout_in():
-    return render_template("layout_input.html")
+    return render_template("layout_input2.html")
 
 
 # This doesn't work
@@ -48,12 +48,12 @@ def my_form_post():
 
     sku_mapping = assign_model.run_assgin_model(c=(x_coord, y_coord), h=h_length, v=v_length)
 
-    return render_template("skuVisualization.html", sku_mapping=sku_mapping)
+    return render_template("layout_out.html", sku_mapping=sku_mapping)
 
 
 @app.route("/forecast-in")
 def forecast_in():
-    return render_template("forecast_input.html")
+    return render_template("forecast_input2.html")
 
 
 @app.route('/forecast-out', methods=['POST'])
@@ -69,17 +69,17 @@ def forecast_out():
 
     out_path = "../static/imgs/forecast_output/" + fig_name
     print(out_path)
-    return render_template("forecast_result.html", img_path=out_path)
+    return render_template("forecast_out.html", img_path=out_path)
 
 
 @app.route("/about")
 def about():
-    return render_template("About.html")
+    return render_template("Contact.html")
 
 
 @app.route("/abc_in")
 def abc_in():
-    return render_template("ABC_in.html")
+    return render_template("ABC_in2.html")
 
 
 @app.route("/abc_out", methods=['POST'])
@@ -104,7 +104,7 @@ def abc_out():
 
     Pie(A,B,C)
 
-    return render_template("ABC_out.html",img_path = out_path)
+    return render_template("ABC_out2.html",img_path = out_path, method = method,ratio = (A,B,C))
 
 
 if __name__ == "__main__":

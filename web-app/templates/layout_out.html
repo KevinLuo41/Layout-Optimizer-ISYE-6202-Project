@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Optimized Layout</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../static/cover.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Forward Picking Zone Analysis Tool</h3>
+            <nav class="nav nav-masthead">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/forecast-in">Order Forecast Model</a>
+                <a class="nav-link" href="/abc_in">ABC Analysis</a>
+                <a class="nav-link active" href="/layout-in">Layout Model</a>
+                <a class="nav-link" href="/about">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <h1>
+        Forward Picking Zone Optimized Layout
+    </h1>
+    <br/>
+    <br/>
+
+    <style>
+        .text_box_input {
+            text-align: left;
+        }
+
+        .input_text_box {
+            width: 100px;
+            margin-left: 100px;
+        }
+
+    </style>
+
+
+    <table class="layout">
+      <tr>
+        <th></th>
+        <th class="prod_aisle">25</th>
+        <th></th>
+        <th class="prod_aisle">26</th>
+        <th class="prod_aisle">27</th>
+        <th></th>
+        <th class="prod_aisle">28</th>
+        <th class="prod_aisle">29</th>
+        <th></th>
+        <th class="prod_aisle">30</th>
+        <th class="prod_aisle">31</th>
+        <th></th>
+        <th class="prod_aisle">32</th>
+        <th></th>
+      </tr>
+      {% for row in range(36) %}
+        <tr>
+            <td class="row_num">{{153-row}}</td>
+            {% for aisle_idx in range(12) %}
+              {% if aisle_idx in [0,2,3,5,6,8,9,11] %}
+                  {% if (sku_mapping[row, aisle_idx]!= -1) and (sku_mapping[row, aisle_idx]!= 0) %}
+                  <td class="sku">{{sku_mapping[row,aisle_idx]}}</td>
+                  {% else %}
+                  <td class="sku"></td>
+                  {% endif %}
+              {% else %}
+              <td></td>
+              {% endif %}
+            {% endfor %}
+            <td class="row_num">{{153-row}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+
+
+    <br/>
+    <br/>
+    <br/>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Developed by <a href="https://www.linkedin.com/in/kaiwen-kevin-luo-2893aa17b/">@Kaiwen Luo</a>, <a
+                    href="">@Diego</a>.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

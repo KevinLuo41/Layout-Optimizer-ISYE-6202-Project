@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Forecast input</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../static/cover.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Forward Picking Zone Analysis Tool</h3>
+            <nav class="nav nav-masthead">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link active" href="/forecast-in">Order Forecast Model</a>
+                <a class="nav-link" href="/abc_in">ABC Analysis</a>
+                <a class="nav-link" href="/layout-in">Layout Model</a>
+                <a class="nav-link" href="/about">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>
+        Forecast Model Input
+    </h1>
+    <br/>
+    <br/>
+
+
+    <div class="form-wrapper">
+        <form class="layout-form" action="/forecast-out" method="POST">
+            <table class="input_table">
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="Artikelno">Artikel to be forecasted:</label></td>
+                    <td class="input_text_box"><input type="text" id="Artikelno" name="Artikelno" value="142"></td>
+                </tr>
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="hist_periods">Number of days of historical data:</label>
+                    </td>
+                    <td class="input_text_box"><input type="text" id="hist_periods" name="hist_periods"></td>
+                </tr>
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="freq">Forecast frequency: Daily(D); Monthly(M);
+                        Yearly(Y)</label>
+                    </td>
+                    <td class="input_text_box"><input type="text" id="freq" name="freq" value="D"></td>
+                </tr>
+                <tr class="text_box_input">
+                    <td class="input_text_name"><label for="fore_periods">Forecast periods (related to what frequency
+                        you
+                        choose):</label></td>
+                    <td class="input_text_box"><input type="text" id="fore_periods" name="fore_periods" value="365">
+                    </td>
+                </tr>
+
+            </table>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 200px">Submit</button>
+
+        </form>
+    </div>
+
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Developed by <a href="https://www.linkedin.com/in/kaiwen-kevin-luo-2893aa17b/">@Kaiwen Luo</a>, <a href="">@Diego</a>.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
