@@ -20,12 +20,12 @@ def str_to_num(s):
 
 @app.route("/")
 def index():
-    return render_template("index2.html")
+    return render_template("index.html")
 
 
 @app.route("/layout-in")
 def layout_in():
-    return render_template("layout_input2.html")
+    return render_template("layout_in.html")
 
 
 # This doesn't work
@@ -53,7 +53,7 @@ def my_form_post():
 
 @app.route("/forecast-in")
 def forecast_in():
-    return render_template("forecast_input2.html")
+    return render_template("forecast_in.html")
 
 
 @app.route('/forecast-out', methods=['POST'])
@@ -79,7 +79,7 @@ def about():
 
 @app.route("/abc_in")
 def abc_in():
-    return render_template("ABC_in2.html")
+    return render_template("ABC_in.html")
 
 
 @app.route("/abc_out", methods=['POST'])
@@ -104,7 +104,7 @@ def abc_out():
 
     Pie(A,B,C)
 
-    return render_template("ABC_out2.html",img_path = out_path, method = method,ratio = (A,B,C))
+    return render_template("ABC_out.html",img_path = out_path, method = method,ratio = (A,B,C))
 
 
 if __name__ == "__main__":
