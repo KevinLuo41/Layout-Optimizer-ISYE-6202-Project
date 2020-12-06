@@ -1,4 +1,3 @@
-import pandas as pd
 from fbprophet import Prophet
 from datetime import date, timedelta
 from DataLoader import *
@@ -69,10 +68,11 @@ def Simulator(artikelno=None, hist_periods=None, freq="D", fore_periods=365):
 
     # save forecast plot
     fig = m.plot(forecast)
-    fig_name = "forecast_%s.png" % artikelno
-    fig.savefig("../output/forecast_output/"+fig_name)
-    fig.savefig("../web-app/static/imgs/forecast_output/" + fig_name)
-    return fig_name, m, forecast
+    name = "forecast_%s" % artikelno
+
+    fig.savefig("../output/forecast_output/"+name+".png")
+    fig.savefig("../web_app/static/imgs/forecast_output/" + name+".png")
+    return name, m, forecast
 
 
 if __name__ == '__main__':

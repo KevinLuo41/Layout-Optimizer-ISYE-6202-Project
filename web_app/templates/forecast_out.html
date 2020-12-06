@@ -37,8 +37,8 @@
             <h3 class="masthead-brand">Forward Picking Zone Analysis Tool</h3>
             <nav class="nav nav-masthead">
                 <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/forecast-in">Order Forecast Model</a>
-                <a class="nav-link active" href="/abc_in">ABC Analysis</a>
+                <a class="nav-link  active" href="/forecast-in">Order Forecast Model</a>
+                <a class="nav-link" href="/abc_in">ABC Analysis</a>
                 <a class="nav-link" href="/layout-in">Layout Model</a>
                 <a class="nav-link" href="/about">Contact</a>
             </nav>
@@ -47,7 +47,7 @@
     <br/>
     <br/>
     <h1>
-        Forecast Input
+        Forecast Output
     </h1>
     <br/>
     <br/>
@@ -65,17 +65,26 @@
     </style>
 
 
-    <div style="text-align: center;"><img src={{img_path}} alt="User Image"></div>
+    <div style="text-align: center;">
+
+        <img src={{img_path}} alt="User Image" style="width: 50%;">
+        <br/>
+        <br/>
+        <form action="/forecast-down" method="POST">
+        <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 350px">Download Forecast .csv
+            File
+        </button>
+                </form>
+    </div>
 
 
-    <br/>
     <br/>
     <br/>
 
     <footer class="mastfoot mt-auto">
         <div class="inner">
             <p>Developed by <a href="https://www.linkedin.com/in/kaiwen-kevin-luo-2893aa17b/">@Kaiwen Luo</a>, <a
-                    href="">@Diego</a>.
+                    href="https://www.linkedin.com/in/diego-fernandez-padron/">@Diego Fernandez</a>.
             </p>
         </div>
     </footer>

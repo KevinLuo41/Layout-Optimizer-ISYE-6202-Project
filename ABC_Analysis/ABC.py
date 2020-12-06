@@ -89,7 +89,7 @@ def HistBox(df,name = None):
 
     fig_name = "HistBox_%s.png" % name
     fig.savefig("../output/ABC_output/" + fig_name)
-    fig.savefig("../web-app/static/imgs/ABC_output/" + fig_name)
+    fig.savefig("../web_app/static/imgs/ABC_output/" + fig_name)
 
 def Pie(A,B,C):
     labels = ['A', 'B', 'C']
@@ -103,6 +103,6 @@ def Pie(A,B,C):
 
     fig_name = "Pie.png"
     fig.savefig("../output/ABC_output/" + fig_name)
-    fig.savefig("../web-app/static/imgs/ABC_output/" + fig_name)
+    fig.savefig("../web_app/static/imgs/ABC_output/" + fig_name)
 
 

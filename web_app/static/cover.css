@@ -175,7 +175,17 @@ form{
 }
 
 .prod_aisle, .row_num {
-    padding: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
     font-size: 1.5em;
     font-weight: bolder;
+}
+
+.no{
+  width: 20px;
+}
+
+.lead{
+  margin: auto;
+  width: 60%;
 }

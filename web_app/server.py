@@ -1,6 +1,6 @@
 from datetime import timedelta
-
-from flask import Flask, render_template, request, redirect, url_for
+import os
+from flask import Flask, render_template, request, Response
 from Simulator.simulator import Simulator
 from Model import opt_model, assign_model
 from ABC_Analysis.ABC import *
@@ -58,19 +58,32 @@ def forecast_in():
 
 @app.route('/forecast-out', methods=['POST'])
 def forecast_out():
+    global name
     Artikelno = int(str_to_num(request.form['Artikelno']))
     hist_periods = str_to_num(request.form['hist_periods'])
     freq = request.form['freq']
     fore_periods = int(str_to_num(request.form['fore_periods']))
 
-    print(Artikelno, hist_periods, freq, fore_periods)
+    # print(Artikelno, hist_periods, freq, fore_periods)
 
-    fig_name, _, _ = Simulator(artikelno=Artikelno, hist_periods=hist_periods, freq=freq, fore_periods=fore_periods)
+    name, _, forecast = Simulator(artikelno=Artikelno, hist_periods=hist_periods, freq=freq, fore_periods=fore_periods)
 
-    out_path = "../static/imgs/forecast_output/" + fig_name
-    print(out_path)
+    out_path = "../static/imgs/forecast_output/" + name + ".png"
+    print(os.path.abspath(__file__))
+    forecast.to_csv("../output/forecast_output/"+name+".csv",index=False)
+
     return render_template("forecast_out.html", img_path=out_path)
 
+@app.route('/forecast-down', methods=['POST'])
+def forecast_down():
+    global name
+    with open("../output/forecast_output/"+name+".csv") as fp:
+        csv = fp.read()
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename="+name+".csv"})
 
 @app.route("/about")
 def about():
