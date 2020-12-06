@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from DataLoader import *
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 def ABC(split_method="quantile", time_scale=None, ratio=(0.2, 0.3, 0.5), value=(0.7, 0.25, 0.05),data=None):
@@ -104,5 +106,6 @@ def Pie(A,B,C):
     fig_name = "Pie.png"
     fig.savefig("../output/ABC_output/" + fig_name)
     fig.savefig("../web_app/static/imgs/ABC_output/" + fig_name)
+    plt.close()
 
 

@@ -2,7 +2,9 @@ from fbprophet import Prophet
 from datetime import date, timedelta
 from DataLoader import *
 from dateutil.relativedelta import relativedelta
-
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
 # Generate holidays
 def Sunday(years=(2018, 2025)):
