@@ -8,10 +8,12 @@ Steps to follow if you wish to build the project in a conda environment:
 1) "cd" to the code directory titled: LAYOUT-OPTIMIZER-ISYE-6202-PROJECT 
 2) Create a new conda environment by running the command:
         conda env create -f environment.yml
+3) Activate created conda environment by running the command:
+        conda activate picking_analysis
 3) Add current directory to the system PATH by running the command: 
-        run pip install -e to 
+        pip install -e. 
 4) Start the web application by running the command:
-        start.sh 
+        ./start.sh 
 5) if permission denied, run the command:
         chmod 755 start.sh first 
 
@@ -21,8 +23,8 @@ Steps to follow if a user wants to build the environment on his/her local comput
 2) Install all required packages to local computer by running the following command:
         pip install requirements.txt
 3) Add current directory to the system PATH by running the command: 
-        run pip install -e to 
+        pip install -e. 
 4) Start the web application by running the command:
-        start.sh 
+        ./start.sh 
 5) if permission denied, run the command:
         chmod 755 start.sh first 
