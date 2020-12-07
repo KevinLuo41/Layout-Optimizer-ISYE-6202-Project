@@ -2,6 +2,7 @@
 .gitignore
 DataLoader.py
 README.md
+environment.yml
 requirements.txt
 setup.py
 start.sh
